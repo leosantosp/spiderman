@@ -37,9 +37,14 @@ p {
     font-weight: 200;
 }
 
-
+@mixin responsive(){
+    @media screen and (max-width: 960px){
+        @content;
+    }
+}
 
 @import 'partials/layout';
 @import 'partials/menu';
 @import 'partials/animations';
+@import 'partials/spacing';
 
