@@ -69,7 +69,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow: hidden;
 }
 
 .spiderman {
@@ -221,7 +220,23 @@ header {
 }
 @media screen and (max-width: 960px) {
   .nav-list {
-    display: none;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    max-width: 250px;
+    background-color: #0A0C10;
+    padding: 100px 20px;
+    z-index: 1;
+    margin: 0;
+    transition: 0.5s ease;
+  }
+  .nav-list.active {
+    right: 0;
   }
 }
 .nav-list li {
@@ -253,7 +268,7 @@ sejam absolutos, ficarão absolutos em relação a tag father */
   height: 0px;
   transform: rotate(-180deg);
   background: linear-gradient(180.01deg, #EA1D22 0.01%, rgba(234, 29, 34, 0) 100%);
-  transition: 0.7s ease;
+  transition: 1s ease;
 }
 .nav-link:hover {
   color: #FAF7FB;
@@ -266,13 +281,48 @@ sejam absolutos, ficarão absolutos em relação a tag father */
   display: none;
   width: 48px;
   height: 48px;
-  background-color: #EDF1F7;
+  background-color: transparent;
   border-radius: 8px;
+  position: relative;
+  transition: 1s ease;
 }
 @media screen and (max-width: 960px) {
   .bx {
     display: block;
+    z-index: 2;
   }
+}
+.bx:after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  width: 70%;
+  height: 5%;
+  background-color: #E5E9EF;
+  transition: 1s ease;
+}
+.bx:before {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: 15%;
+  width: 70%;
+  height: 5%;
+  background-color: #E5E9EF;
+  transition: 1s ease;
+}
+
+.bx.active {
+  transition: 1s ease;
+}
+.bx.active:after {
+  transform: rotate(225deg);
+  top: 45%;
+}
+.bx.active:before {
+  transform: rotate(-225deg);
+  top: 45%;
 }
 
 .nav-social {

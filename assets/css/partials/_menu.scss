@@ -25,7 +25,27 @@ header {
     display: flex;
 
     @include responsive(){
-        display: none;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 100%;
+        max-width: 250px;
+        background-color: $blue-dark;
+        padding: 100px 20px;
+        z-index: 1;
+        margin: 0;
+        transition: .5s ease;
+
+        
+        &.active{
+            right: 0;
+        }
+
     }
 
     li {
@@ -61,7 +81,7 @@ header {
         height: 0px;
         transform: rotate(-180deg);
         background: linear-gradient(180.01deg, #EA1D22 0.01%, rgba(234, 29, 34, 0) 100%);
-        transition: .7s ease;
+        transition: 1s ease;
         
     }
 
@@ -72,20 +92,64 @@ header {
             height: 40px;
         }
     }
+
 }
 
 .bx {
 
     @include responsive(){
         display: block;
+        z-index: 2;
     }
 
     display: none;
     width: 48px;
     height: 48px;
 
-    background-color: $white;
+    background-color: transparent;
     border-radius: 8px;
+    position: relative;
+    transition: 1s ease;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 35%;
+        left: 15%;
+        width: 70%;
+        height: 5%;
+        background-color: $white-dark;
+        transition: 1s ease;
+
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 60%;
+        left: 15%;
+        width: 70%;
+        height: 5%;
+        background-color: $white-dark;
+        transition: 1s ease;
+
+    }
+
+}
+
+.bx.active {
+    transition: 1s ease;
+
+    &:after{
+        transform: rotate(225deg);
+        top: 45%;
+    }
+
+    &:before{
+        transform: rotate(-225deg);
+        top: 45%;
+    }
+
 }
 
 .nav-social {

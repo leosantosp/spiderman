@@ -44,3 +44,19 @@ document.addEventListener('DOMContentLoaded', () =>{
     {y: 0, opacity: 1, ease: Expo.easeInOut}, '-=0.5')
     
 });
+
+window.addEventListener('resize', function(){
+    var largura = window.innerWidth;
+
+    if(largura <= 960){
+        this.document.getElementsByClassName('js-tilt')[0].className = 'responsive';
+    }
+})
+
+var menu = document.querySelector('.nav-list');
+var hamburguer = document.querySelector('.bx');
+
+hamburguer.onclick = function(){
+    hamburguer.classList.toggle('active');
+    menu.classList.toggle('active');
+}
